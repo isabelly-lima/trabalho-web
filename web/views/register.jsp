@@ -84,7 +84,7 @@
         <!-- /.col -->
       </div>
     </form>
-    <a href="login.html" class="text-center">JÃ¡ possuo um cadastro</a>
+    <a href="login.html" class="text-center">Já possuo um cadastro</a>
   </div>
   <!-- /.form-box -->
 </div>
