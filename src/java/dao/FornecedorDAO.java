@@ -29,4 +29,23 @@ public class FornecedorDAO extends Executa{
 		stmt.setDate(8, Date.valueOf(fornecedor.getDataCad()));
 		stmt.execute();
 	}
+	public boolean editarFornecedor(Fornecedor_Pedido fornecedor) {
+		String sql = "update fornecedor set nomeForn=?, emailForn=?, senhaForn=?, endereco=?, telefone=?, cnpj=?, dataCad=? where idForn=?";
+		PreparedStatement stmt;
+		try {
+			stmt = getConexao().prepareStatement(sql);
+			stmt.setString(1, fornecedor.getNomeForn());
+			stmt.setString(2, fornecedor.getEmailForn());
+			stmt.setString(3, fornecedor.getSenhaForn());
+			stmt.setString(4, fornecedor.getEndereco());
+			stmt.setString(5, fornecedor.getTelefone());
+			stmt.setString(6, fornecedor.getCnpj());
+			stmt.setDate(7, Date.valueOf(fornecedor.getDataCad()));
+			stmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return false;
+	}
 }

@@ -30,4 +30,22 @@ public class PedidoDAO extends Executa{
 		stmt.setInt(7, pedido.getTipo());
 		stmt.execute();
 	}
+	public boolean editarPedido(Pedido_Compra pedido) {
+		String sql = "update pedido set dataAbertura=?, dataFechamento=?, produtos=?, autor=?, descricao=?, tipo=? where idPedido=?";
+		PreparedStatement stmt;
+		try {
+			stmt = getConexao().prepareStatement(sql);
+			stmt.setDate(1, Date.valueOf(pedido.getDataAbertura()));
+			stmt.setDate(2, Date.valueOf(pedido.getDataFechamento()));
+			stmt.setArray(3, (Array) pedido.getProdutos());
+			stmt.setInt(4, pedido.getAutor().getIdFunc());
+			stmt.setString(5, pedido.getDescricao());
+			stmt.setInt(6, pedido.getTipo());
+			stmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 }

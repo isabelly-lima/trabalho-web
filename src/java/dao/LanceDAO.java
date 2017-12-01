@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 import model.Lance;
@@ -18,7 +19,21 @@ public class LanceDAO extends Executa {
 		lance.setDataLance(LocalDate.now());
 		stmt.setDouble(1, lance.getValor());
 		stmt.setDate(2, Date.valueOf(lance.getDataLance()));
-		stmt.setString(3, lance.getAutor().getIdForn());
+		stmt.setInt(3, lance.getAutor().getIdForn());
 		stmt.execute();
+	}
+	public boolean editarLance(Lance lance) {
+		String sql = "update lance set valor=?, data=? where autor="+lance.getAutor().getIdForn();
+		PreparedStatement stmt;
+		try {
+			stmt = getConexao().prepareStatement(sql);
+			stmt.setDouble(1, lance.getValor());
+			stmt.setDate(2, Date.valueOf(lance.getDataLance()));
+			stmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 }

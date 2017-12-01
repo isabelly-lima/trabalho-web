@@ -19,4 +19,18 @@ public class ProdutoDAO extends Executa {
 		stmt.setString(3, produto.getNomeProduto());
 		stmt.execute();
 	}
+	public boolean editarProduto(Produto produto) {
+		String sql = "update produto set quantidade=?, nome=? where idProduto=?";
+		PreparedStatement stmt;
+		try {
+			stmt = getConexao().prepareStatement(sql);
+			stmt.setInt(1, produto.getQuantidade());
+			stmt.setString(2, produto.getNomeProduto());
+			stmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 }
