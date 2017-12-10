@@ -14,6 +14,12 @@ public class Categoria {
 		setNomeCategoria(nome);
 	}
 	
+	public Categoria(int idCategoria, String nomeCategoria, ArrayList<Produto> produtos) {
+		setIdCategoria(idCategoria);
+		setNomeCategoria(nomeCategoria);
+		setProdutos(produtos);
+	}
+	
 	public String getNomeCategoria() {
 		return nomeCategoria;
 	}

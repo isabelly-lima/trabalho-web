@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.Pessoa;
@@ -44,5 +45,58 @@ public class PessoaDAO extends Executa {
 			return false;
 		}
 		return true;
+	}
+	
+	public void excluirPessoa(Pessoa pessoa) {
+		String sql = "delete from pessoa where idPessoa=?";
+		PreparedStatement stmt = getConexao().prepareStatement(sql);
+		stmt.execute();
+		stmt.close();
+	}
+	
+	public ArrayList<Pessoa> listarPessoas(){
+		ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
+		String sql = "select * from pessoa";
+		PreparedStatement stmt = null;
+		try {
+			stmt = getConexao().prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				String nome = rs.getString(1);
+				String email = rs.getString(2);
+				String senha = rs.getString(3);
+				String cpf = rs.getString(4);
+				String rg = rs.getString(5);
+				int id = rs.getInt(6);
+				String setor = rs.getString(7);
+				int acesso = rs.getInt(8);
+				pessoas.add(new Pessoa(nome, email, senha, cpf, rg, id, setor, acesso));
+			}
+			stmt.close();
+		}catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		return pessoas;
+	}
+	
+	public Pessoa getPessoa(int idFunc) {
+		String sql = "select nome, email, senha, cpf, rg, setor, acesso from pessoa where idFunc=?";
+		try {
+			PreparedStatement stmt = getConexao().prepareStatement(sql);
+			stmt.setInt(1, idFunc);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				String nome = rs.getString("nome");
+				String email = rs.getString("email");
+				String senha = rs.getString("senha");
+				String cpf = rs.getString("cpf");
+				String rg = rs.getString("rg");
+				String setor = rs.getString("setor");
+				int acesso = rs.getInt("acesso");
+			}
+			return new Pessoa(nome, email, senha, cpf, rg, idFunc, setor, acesso);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -4,6 +4,7 @@ import java.sql.Array;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
@@ -47,5 +48,37 @@ public class PedidoDAO extends Executa{
 			return false;
 		}
 		return true;
+	}
+	
+	public void excluirPedido(Pedido_Compra pedido) {
+		String sql = "delete from pedido where idPedido=?";
+		PreparedStatement stmt = getConexao().prepareStatement(sql);
+		stmt.execute();
+		stmt.close();
+	}
+	
+	public ArrayList<Pedido_Compra> listarPedidos(){
+		ArrayList<Pedido_Compra> pedidos = new ArrauList<Pedido_Compra>();
+		String sql = "select * from pedido";
+		PreparedStatement stmt = null;
+		try {
+			stmt = getConexao().prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				int id = rs.getInt(1);
+				LocalDate dataAbertura = rs.getDate(2).toLocalDate();
+				LocalDate dataFechamento = rs.getDate(3).toLocalDate();
+				ArrayList<Produto> produtos = (Array) rs.getArray(4);
+				String descricao = rs.getString(5);
+				int tipo = rs.getInt(6);
+				Pessoa autor;
+				autor = new PessoaDAO(new ConnectionFactory().getConnection()).getPessoa(id);
+				pedidos.add(new Pedido_Compra(id, dataAbertura, dataFechamento, produtos, descricao, tipo, autor));
+			}
+			stmt.close();
+		}catch(SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		return pedidos;
 	}
 }

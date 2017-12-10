@@ -18,13 +18,13 @@ public class Pedido_Compra {
 		
 	}
 	public Pedido_Compra(int id, LocalDate dataAbertura, LocalDate dataFechamento, 
-			Pessoa autor, String descricao, int tipo) throws PedidoInvalidoException {
+			String descricao, int tipo, Pessoa autor) throws PedidoInvalidoException {
 		setIdPedido(id);
 		setDataAbertura(dataAbertura);
 		setDataFechamento(dataFechamento);
-		setAutor(autor);
 		setDescricao(descricao);
 		setTipo(tipo);
+		setAutor(autor);
 	}
 	
 	public int getIdPedido() {

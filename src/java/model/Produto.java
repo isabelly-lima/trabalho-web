@@ -2,15 +2,15 @@ package model;
 
 public class Produto {
 	 private int idProduto;
-	 private int quantidade;
+	 private ArrayList<Itens_Pedido> itens;
 	 private String nomeProduto;
 	 
 	 public Produto() {
 		 
 	 }
-	 public Produto(int id, int quantidade, String nome) {
+	 public Produto(int id, ArrayList<Itens_Pedido> itens, String nome) {
 		 setIdProduto(id);
-		 setQuantidade(quantidade);
+		 setItens(itens);
 		 setNomeProduto(nome);
 	 }
 	 
@@ -20,11 +20,11 @@ public class Produto {
 	public void setIdProduto(int idProduto) {
 		this.idProduto = idProduto;
 	}
-	public int getQuantidade() {
-		return quantidade;
+	public ArrayList<Itens_Pedido> getItens(){
+		return itens;
 	}
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
+	public void setItens(ArrayList<Itens_Pedido> itens) {
+		this.itens = itens;
 	}
 	public String getNomeProduto() {
 		return nomeProduto;

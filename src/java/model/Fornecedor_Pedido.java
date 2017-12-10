@@ -26,6 +26,18 @@ public class Fornecedor_Pedido {
 		setDataCad(data);
 	}
 	
+	public Fornecedor_Pedido(ind id, String nomeForn, String emailForn, String senhaForn, 
+			String endereco, String telefone, String cnpj, LocalDate data) {
+		setIdForn(id);
+		setNomeForn(nomeForn);
+		setEmailForn(emailForn);
+		setSenhaForn(senhaForn);
+		setEndereco(endereco);
+		setTelefone(telefone);
+		setCnpj(cnpj);
+		setDataCad(data);
+	}
+	
 	public String getNomeForn() {
 		return nomeForn;
 	}
