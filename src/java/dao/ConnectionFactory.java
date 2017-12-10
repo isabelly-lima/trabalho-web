@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class ConnectionFactory { 
 	public Connection getConnection() { 
 		String driver = "org.postgresql.Driver";
-        String user = "postgres";
-        String senha = "minhasenha";
-        String url = "jdbc:postgresql://localhost:5432/Databases";
+        String user = "admin";
+        String senha = "admin";
+        String url = "jdbc:mysql://localhost/Database";
         Connection con = null;
         try {
             Class.forName(driver);
