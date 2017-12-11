@@ -32,41 +32,41 @@
   <div class="register-box-body">
     <p class="login-box-msg">Cadastrar Fornecedor</p>
 
-    <form action="../../index.html" method="post">
+    <form action="register" name="register" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Nome do Fornecedor">
+        <input type="text" class="form-control" name="nome" placeholder="Nome do Fornecedor">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Endereço">
+        <input type="text" class="form-control" name="endereco" placeholder="Endereço">
         <span class="glyphicon  glyphicon-home form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Cidade">
+        <input type="text" class="form-control" name="cidade" placeholder="Cidade">
         <span class="glyphicon  glyphicon-map-marker form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Telefone">
+        <input type="text" class="form-control" name="telefone" placeholder="Telefone">
         <span class="glyphicon  glyphicon-phone-alt form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="CNPJ">
+        <input type="text" class="form-control" name="cnpj" placeholder="CNPJ">
         <span class="form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Razão Social">
+        <input type="text" class="form-control" name="razaoSocial" placeholder="Razão Social">
         <span class="form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input type="email" class="form-control" name="email" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Senha">
+        <input type="password" class="form-control" name="senha" placeholder="Senha">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Reescreva a senha">
+        <input type="password" class="form-control" name="reSenha" placeholder="Reescreva a senha">
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
       <div class="row">
@@ -78,13 +78,14 @@
           </div>
         </div>
         <!-- /.col -->
+        <input type="hidden" name="flag" value="register">
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Cadastrar</button>
+          <button type="submit" value="register" class="btn btn-primary btn-block btn-flat">Cadastrar</button>
         </div>
         <!-- /.col -->
       </div>
     </form>
-    <a href="login.html" class="text-center">J� possuo um cadastro</a>
+    <a href="login.html" class="text-center">J?possuo um cadastro</a>
   </div>
   <!-- /.form-box -->
 </div>
